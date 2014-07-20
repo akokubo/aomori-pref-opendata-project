@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'map/index'
+  get 'map' => "map#index", as: :map
 
   root 'home#index'
   get 'home/about' => 'home#about'
