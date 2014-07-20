@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <title>OpencampusWorkshop</title>
+  <title><%= full_title(yield(:title)) %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -10,13 +10,13 @@
 <body>
 <div data-role="page">
   <div data-role="header">
-    <h1>Page Title</h1>
+    <h1><%= full_title(yield(:title)) %></h1>
   </div>
   <div role="main" class="ui-content">
 <%= yield %>
   </div>
   <div data-role="footer">
-    <h4>Page Footer</h4>
+    <h4>青森大学ソフトウェア情報学部</h4>
   </div>
 </div>
 </body>
