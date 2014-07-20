@@ -52,3 +52,5 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'jquery_mobile_rails'
+gem 'gmaps4rails'
+gem 'underscore-rails'
