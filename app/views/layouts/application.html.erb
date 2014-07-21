@@ -12,6 +12,7 @@
   <%= render 'layouts/menu_panel' %>
   <%= render 'layouts/header' %>
   <div role="main" class="ui-content">
+  <% if notice %><p class="notice"><%= notice %></p><% end %>
 <%= yield %>
   </div>
   <%= render 'layouts/footer' %>

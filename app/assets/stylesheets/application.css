@@ -14,3 +14,10 @@
  *= require_tree .
  *= require jquery.mobile
  */
+
+.notice {
+  padding: 14px;
+  background-color: #d9edf7;
+  border: 1px solid #bce8f1;
+  color: #3a87ad;
+}
