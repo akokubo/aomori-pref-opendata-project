@@ -8,4 +8,8 @@ module ApplicationHelper
       "#{page_title} - #{base_title}"
     end
   end
+
+  def link_to_btn(body, url, html_options = {})
+    link_to(body, url, { class: ['ui-btn', 'ui-btn-inline'] }.merge(html_options))
+  end
 end
