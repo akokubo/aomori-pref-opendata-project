@@ -1,9 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%= provide :title, "#{@category.name}の一覧" %>
+<h1><%= @category.name %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+<% if edit_mode? %>
+  <%= link_to_btn 'カテゴリー名を編集', edit_category_path(@category) %>
+  <%= link_to_btn 'このカテゴリーを削除', @category, method: :delete, data: { confirm: '本当に削除しますか？' } %>
+<hr>
+<% end %>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<% if @category.places.present? %>
+<ul data-role="listview">
+  <% @category.places.each do |place| %>
+  <li><% link_to place.name, place %></li>
+  <% end %>
+</ul>
+<% else %>
+<p>このカテゴリーに登録された地点はありません。</p>
+<% end %>
+
+<% if edit_mode? %>
+<%= link_to_btn '地点を追加', new_place_path %>
+<% end %>
+
+<hr>
+
+<%= link_to_btn 'カテゴリーの一覧へ戻る', categories_path %>
