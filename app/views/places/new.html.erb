@@ -1,5 +1,45 @@
-<h1>New place</h1>
+<% provide :title, "新しい地点の作成" %>
 
-<%= render 'form' %>
+<%= form_for(@place) do |f| %>
+  <fieldset data-role="controlgroup">
+  <% if @place.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
 
-<%= link_to 'Back', places_path %>
+      <ul>
+      <% @place.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div data-role="fieldcontain">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div data-role="fieldcontain">
+    <%= f.label :category_id %><br>
+    <%= f.text_field :category_id %>
+  </div>
+  <div data-role="fieldcontain">
+    <%= f.label :lat %><br>
+    <%= f.text_field :lat %>
+  </div>
+  <div data-role="fieldcontain">
+    <%= f.label :lng %><br>
+    <%= f.text_field :lng %>
+  </div>
+  <div data-role="fieldcontain">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit "地点の登録" %>
+  </div>
+  </fieldset>
+<% end %>
+
+<%= link_to_btn '場所の一覧へ', places_path %>
+
+<%= link_to_btn 'カテゴリーの一覧へ', categories_path %>

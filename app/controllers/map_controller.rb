@@ -6,5 +6,6 @@ class MapController < ApplicationController
       marker.lng place.lng
       marker.infowindow "<h1>#{place.name}</h1><p>#{place.description}</p>"
     end
+    @place = Place.new
   end
 end
