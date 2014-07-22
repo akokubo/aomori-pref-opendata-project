@@ -1,4 +1,4 @@
-<% provide :title, "新しい地点の作成" %>
+<% provide :title, "新しい場所の登録" %>
 
 <%= form_for(@place) do |f| %>
   <fieldset data-role="controlgroup">
@@ -15,31 +15,19 @@
   <% end %>
 
   <div data-role="fieldcontain">
-    <%= f.label :name %><br>
+    <%= f.label :name, "名前" %><br>
     <%= f.text_field :name %>
   </div>
+  <%= f.hidden_field :lat %>
+  <%= f.hidden_field :lng %>
   <div data-role="fieldcontain">
-    <%= f.label :category_id %><br>
-    <%= f.text_field :category_id %>
-  </div>
-  <div data-role="fieldcontain">
-    <%= f.label :lat %><br>
-    <%= f.text_field :lat %>
-  </div>
-  <div data-role="fieldcontain">
-    <%= f.label :lng %><br>
-    <%= f.text_field :lng %>
-  </div>
-  <div data-role="fieldcontain">
-    <%= f.label :description %><br>
+    <%= f.label :description, "説明" %><br>
     <%= f.text_area :description %>
   </div>
   <div class="actions">
-    <%= f.submit "地点の登録" %>
+    <%= f.submit "登録", data: { theme: 'b' } %>
   </div>
   </fieldset>
 <% end %>
 
-<%= link_to_btn '場所の一覧へ', places_path %>
-
-<%= link_to_btn 'カテゴリーの一覧へ', categories_path %>
+<%= link_to_btn 'マップへ', map_path %>

@@ -15,6 +15,8 @@ class PlacesController < ApplicationController
   # GET /places/new
   def new
     @place = Place.new
+    @place.lat = params[:lat]
+    @place.lng = params[:lng]
   end
 
   # GET /places/1/edit
