@@ -13,12 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140720005446) do
 
-  create_table "categories", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "place_images", force: true do |t|
     t.integer  "place_id"
     t.binary   "data"
@@ -31,14 +25,11 @@ ActiveRecord::Schema.define(version: 20140720005446) do
 
   create_table "places", force: true do |t|
     t.string   "name"
-    t.integer  "category_id"
     t.float    "lat"
     t.float    "lng"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "places", ["category_id"], name: "index_places_on_category_id"
 
 end

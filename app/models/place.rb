@@ -1,3 +1,3 @@
 class Place < ActiveRecord::Base
-  belongs_to :category
+  has_one :place_image
 end

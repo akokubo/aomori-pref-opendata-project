@@ -108,7 +108,7 @@ MAPRAMBLE.fitBounds = function () {
 $(document).on('pageshow', function () {
     'use strict';
     MAPRAMBLE.setHeight();
-    MAPRAMBLE.map = MAPRAMBLE.createMap({zoom: 14, lat: 40.7749422, lng: 140.7949788});
+    MAPRAMBLE.map = MAPRAMBLE.createMap({zoom: 14, lat: 40.784056, lng: 140.781172});
     MAPRAMBLE.addPlaceMarkers();
     MAPRAMBLE.fitBounds();
     MAPRAMBLE.setEventHandler();
