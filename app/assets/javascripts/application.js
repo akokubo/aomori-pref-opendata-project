@@ -14,7 +14,5 @@
 //= require jquery_ujs
 //= require jquery.mobile.init
 //= require jquery.mobile
-//= require underscore
-//= require gmaps/google
 //= require_tree .
 

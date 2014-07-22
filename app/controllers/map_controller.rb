@@ -1,11 +1,9 @@
 class MapController < ApplicationController
   def index
     @places = Place.all
-    @hash = Gmaps4rails.build_markers(@places) do |place, marker|
-      marker.lat place.lat
-      marker.lng place.lng
-      marker.infowindow "<h1>#{place.name}</h1><p>#{place.description}</p>"
-    end
-    @place = Place.new
+    @lat_max = Place.maximum(:lat)
+    @lat_min = Place.minimum(:lat)
+    @lng_max = Place.maximum(:lng)
+    @lng_min = Place.minimum(:lng)
   end
 end
