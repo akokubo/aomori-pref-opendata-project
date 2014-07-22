@@ -1,4 +1,15 @@
 <% provide :title, "ようこそ" %>
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<p>マップ上で、自分の好きな場所を登録して、自分だけの地図を作りましょう</p>
+<% if edit_mode? %>
+<p>編集できなくするには、「閲覧モード」に切り替えます。</p>
+<% else %>
+<p>編集するには、「編集モード」に切り替えます。</p>
+<% end %>
+<%= link_to_btn "マップへ", map_path %>
+<%= link_to_btn "場所の一覧へ", places_path %>
 <%= link_to_btn "アプリについて", home_about_path %>
+<% if edit_mode? %>
+<%= link_to_btn "閲覧モードへ", signout_path, method: :delete %>
+<% else %>
+<%= link_to_btn "編集モードへ", sessions_path, method: :post %>
+<% end %>

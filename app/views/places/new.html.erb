@@ -18,16 +18,20 @@
     <%= f.label :name, "名前" %><br>
     <%= f.text_field :name %>
   </div>
-  <%= f.hidden_field :lat %>
-  <%= f.hidden_field :lng %>
   <div data-role="fieldcontain">
     <%= f.label :description, "説明" %><br>
     <%= f.text_area :description %>
+  </div>
+  <div data-role="fieldcontain">
+    <%= f.label :lat, "緯度" %><br>
+    <%= f.text_field :lat %>
+  </div>
+  <div data-role="fieldcontain">
+    <%= f.label :lng, "経度" %><br>
+    <%= f.text_field :lng %>
   </div>
   <div class="actions">
     <%= f.submit "登録", data: { theme: 'b' } %>
   </div>
   </fieldset>
 <% end %>
-
-<%= link_to_btn 'マップへ', map_path %>
