@@ -1,32 +1,37 @@
 README
 ======
 
-1. ダウンロード
+ダウンロード
+-----------
 
 ```
 $ git clone https://github.com/akokubo/opencampus_workshop.git
 ```
 
-2. Gemのインストール
+Gemのインストール
+----------------
 
 ```
 $ cd opencampus_workshop
 $ bundle install --without production
 ```
 
-3. マイグレーション
+マイグレーション
+---------------
 
 ```
 $ bin/rake db:migrate
 ```
 
-4. 起動
+起動
+----
 
 ```
 $ bin/rails server --port 3000
 ```
 
-5. アクセス
+アクセス
+--------
 
 ブラウザで[http://localhost:3000/](http://localhost:3000/)にアクセス
 
