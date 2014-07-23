@@ -27,7 +27,7 @@ $ bin/rake db:migrate
 ----
 
 ```
-$ bin/rails server --port 3000
+$ bin/rails server --port=3000
 ```
 
 アクセス
