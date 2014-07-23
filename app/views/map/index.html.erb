@@ -10,7 +10,9 @@ MAPRAMBLE.mode = 'viewer';
 MAPRAMBLE.places = [];
 <% if @places.present? %>
   <% @places.each do |place| %>
-MAPRAMBLE.places.push({ id: <%= place.id %>, lat: <%= place.lat %>, lng: <%= place.lng %>, name: "<%= place.name %>", description: "<%= place.description %>" });
+MAPRAMBLE.places.push(
+    <%=raw place.to_json %>
+);
   <% end %>
 MAPRAMBLE.bounds = new google.maps.LatLngBounds(
     new google.maps.LatLng(<%= @lat_min %>, <%= @lng_min %>),
