@@ -13,6 +13,7 @@ Gemのインストール
 
 ```
 $ cd opencampus_workshop
+$ bundle update
 $ bundle install --without production
 ```
 
