@@ -1,10 +1,9 @@
 <% provide :title, @place.name %>
 
-<p id="notice"><%= notice %></p>
-
-<p>
-  <%= @place.description %>
-</p>
+<%= raw(@place.description) %>
+<% if @place.image.present? && @place.image.data != nil %>
+<p><%= place_image_tag @place, width: "100%" %></p>
+<% end %>
 
 <% if edit_mode? %>
 <%= link_to_btn '編集', edit_place_path(@place) %>

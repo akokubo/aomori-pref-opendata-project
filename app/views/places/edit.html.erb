@@ -22,6 +22,24 @@
     <%= f.label :description, "説明" %><br>
     <%= f.text_area :description %>
   </div>
+
+  <%= f.fields_for :image do |imgf| %>
+    <% if !imgf.object.new_record? && imgf.object.errors.empty? && @place.image.data != nil %>
+      <div>
+        現在の画像
+        <%= place_image_tag @place, width: 250, style: "vertical-align: top;" %>
+      </div>
+      <div>
+        <%= imgf.check_box :_destroy %><%= imgf.label :_destroy, "現在の画像を削除する" %>
+        <%= imgf.hidden_field :id %>
+      </div>
+    <% end %>
+  <div data-role="fieldcontain">
+    <%= imgf.label :uploaded_image, "別な画像に入れ替える" %>
+    <%= imgf.file_field :uploaded_image %>
+  </div>
+  <% end %>
+
   <div data-role="fieldcontain">
     <%= f.label :lat, "緯度" %><br>
     <%= f.text_field :lat %>

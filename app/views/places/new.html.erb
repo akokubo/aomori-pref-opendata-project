@@ -22,6 +22,14 @@
     <%= f.label :description, "説明" %><br>
     <%= f.text_area :description %>
   </div>
+
+  <%= f.fields_for :image do |imgf| %>
+  <div data-role="fieldcontain">
+    <%= imgf.label :uploaded_image, "表示画像" %>
+    <%= imgf.file_field :uploaded_image %>
+  </div>
+  <% end %>
+
   <div data-role="fieldcontain">
     <%= f.label :lat, "緯度" %><br>
     <%= f.text_field :lat %>

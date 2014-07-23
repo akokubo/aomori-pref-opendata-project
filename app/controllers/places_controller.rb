@@ -10,17 +10,24 @@ class PlacesController < ApplicationController
   # GET /places/1
   # GET /places/1.json
   def show
+      if params[:format].in?(["jpg", "png", "gif"])
+      send_image
+    else
+      render "places/show"
+    end
   end
 
   # GET /places/new
   def new
     @place = Place.new
+    @place.build_image
     @place.lat = params[:lat]
     @place.lng = params[:lng]
   end
 
   # GET /places/1/edit
   def edit
+    @place.build_image unless @place.image
   end
 
   # POST /places
@@ -30,7 +37,7 @@ class PlacesController < ApplicationController
 
     respond_to do |format|
       if @place.save
-        format.html { redirect_to @place, notice: 'Place was successfully created.' }
+        format.html { redirect_to map_url }
         format.json { render :show, status: :created, location: @place }
       else
         format.html { render :new }
@@ -42,9 +49,12 @@ class PlacesController < ApplicationController
   # PATCH/PUT /places/1
   # PATCH/PUT /places/1.json
   def update
+    if params[:place][:image_attributes]['_destroy'] == 1
+      @place.image.destroy
+    end
     respond_to do |format|
       if @place.update(place_params)
-        format.html { redirect_to @place, notice: 'Place was successfully updated.' }
+        format.html { redirect_to map_url }
         format.json { render :show, status: :ok, location: @place }
       else
         format.html { render :edit }
@@ -58,7 +68,7 @@ class PlacesController < ApplicationController
   def destroy
     @place.destroy
     respond_to do |format|
-      format.html { redirect_to places_url, notice: 'Place was successfully destroyed.' }
+      format.html { redirect_to map_url }
       format.json { head :no_content }
     end
   end
@@ -71,6 +81,15 @@ class PlacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:name, :category_id, :lat, :lng, :description)
+      params.require(:place).permit(:name, :lat, :lng, :description, image_attributes: [:uploaded_image])
+    end
+
+    # 画像送信
+    def send_image
+      if @place.image.present? && @place.image.data != nil
+        send_data @place.image.data, type: @place.image.content_type, disposition: "inline"
+      else
+        raise NotFount
+      end
     end
 end
