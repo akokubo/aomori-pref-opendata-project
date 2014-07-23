@@ -49,9 +49,6 @@ class PlacesController < ApplicationController
   # PATCH/PUT /places/1
   # PATCH/PUT /places/1.json
   def update
-    if params[:place][:image_attributes]['_destroy'] == 1
-      @place.image.destroy
-    end
     respond_to do |format|
       if @place.update(place_params)
         format.html { redirect_to map_url }
