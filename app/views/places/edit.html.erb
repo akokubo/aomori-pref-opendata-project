@@ -27,7 +27,7 @@
     <% if !imgf.object.new_record? && imgf.object.errors.empty? && @place.image.data != nil %>
       <div>
         現在の画像
-        <%= place_image_tag @place, width: 250, style: "vertical-align: top;" %>
+        <%= place_image_tag @place, style: "max-width: 320px; width: 100%; vertical-align: top;" %>
       </div>
       <div>
         <%= imgf.check_box :_destroy %><%= imgf.label :_destroy, "現在の画像を削除する" %>

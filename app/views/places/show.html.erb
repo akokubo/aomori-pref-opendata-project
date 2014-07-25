@@ -2,7 +2,7 @@
 
 <%= raw(@place.description) %>
 <% if @place.image.present? && @place.image.data != nil %>
-<p><%= place_image_tag @place, width: "100%" %></p>
+<p><%= place_image_tag @place, style: "max-width:320px; width:100%;" %></p>
 <% end %>
 
 <% if edit_mode? %>

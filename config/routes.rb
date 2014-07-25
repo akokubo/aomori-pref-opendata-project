@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'home/about' => 'home#about'
   
-  resources :place_images
-
   resources :places
   
   # The priority is based upon order of creation: first created -> highest priority.
