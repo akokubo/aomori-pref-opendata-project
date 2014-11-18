@@ -101,7 +101,11 @@ MAPRAMBLE.setEventHandler = function () {
 // マップの表示範囲をマーカーに合わせる
 MAPRAMBLE.fitBounds = function () {
     'use strict';
-    this.map.fitBounds(this.bounds);
+    if (this.places.length > 1) {
+        this.map.fitBounds(this.bounds);
+    } else if (this.places.length === 1) {
+        this.map.setCenter(this.bounds.getCenter());
+    }
 };
 
 // メイン・プログラム
