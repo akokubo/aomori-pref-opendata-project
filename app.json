@@ -1,4 +1,8 @@
 {
-  "name": "A field notes application for open campus workshop at Aomori University",
-  "repository": "https://github.com/akokubo/opencampus_workshop"
+  "name": "app. for opencampus@aomori-u",
+  "description": "Application for open campus workshop at Aomori University",
+  "repository": "https://github.com/akokubo/opencampus_workshop",
+  "scripts": {
+  	"postdeploy": "bundle exec rake db:migrate"
+  }
 }
