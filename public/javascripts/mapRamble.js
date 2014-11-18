@@ -94,7 +94,7 @@ MAPRAMBLE.setEventHandler = function () {
     if (this.mode === 'edit') {
         google.maps.event.addListener(this.map, 'click', function (event) {
             $.mobile.changePage('/places/new?lat=' + event.latLng.lat() + '&lng=' + event.latLng.lng());
-        });        
+        });
     }
 };
 
