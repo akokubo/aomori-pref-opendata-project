@@ -1,5 +1,4 @@
 <% provide :title, "マップ" %>
-<script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
 <script>
 var MAPRAMBLE = {};
 <% if edit_mode? %>
@@ -7,19 +6,13 @@ MAPRAMBLE.mode = 'edit';
 <% else %>
 MAPRAMBLE.mode = 'viewer';
 <% end %>
-MAPRAMBLE.places = [];
 <% if @places.present? %>
-  <% @places.each do |place| %>
-MAPRAMBLE.places.push(
-    <%=raw place.to_json %>
-);
-  <% end %>
 MAPRAMBLE.bounds = new google.maps.LatLngBounds(
     new google.maps.LatLng(<%= @lat_min %>, <%= @lng_min %>),
     new google.maps.LatLng(<%= @lat_max %>, <%= @lng_max %>)
 );
 <% end %>
 </script>
-<script src="/javascripts/mapRamble.js"></script>
 
-<div id="map"></div>
+<script src="/javascripts/mapRamble.js"></script>
+<div id="map" style="border: 1px solid black;"></div>

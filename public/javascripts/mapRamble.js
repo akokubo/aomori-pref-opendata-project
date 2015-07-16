@@ -1,6 +1,10 @@
 /*global google, $, MAPRAMBLE */
 /*jslint browser:true, devel:true */
 
+// var MAPRAMBLE = {};
+
+MAPRAMBLE.map = null;
+
 // 使用する変数の準備
 MAPRAMBLE.markers = [];
 
@@ -38,8 +42,10 @@ MAPRAMBLE.addPlaceMarkers = function () {
 
     var that = this;
 
-    that.places.map(function (place) {
-        that.addMarker(place);
+    $.getJSON("/places.json", function (places) {
+        places.map(function (place) {
+            that.addMarker(place);
+        });
     });
 };
 
@@ -71,15 +77,16 @@ MAPRAMBLE.addMarker = function (place) {
 };
 
 // マップの高さを画面サイズに合わせる
-MAPRAMBLE.setHeight = function () {
+MAPRAMBLE.resizeHeight = function () {
     'use strict';
     var windowInnerHeight = $(window).innerHeight(),
         headerHeight = $("#header").height(),
         footerHeight = $("#footer").height(),
-        uiContentPadding
+        uiContentPadding = 180;
+/*
             = parseInt($(".ui-content").css('padding-top'), 10)
             + parseInt($(".ui-content").css('padding-bottom'), 10);
-
+*/
     $("#map").css("height", windowInnerHeight - headerHeight - footerHeight - uiContentPadding);
 };
 
@@ -88,12 +95,12 @@ MAPRAMBLE.setEventHandler = function () {
     'use strict';
 
     $(window).on('resize', function () {
-        MAPRAMBLE.setHeight();
+        MAPRAMBLE.resizeHeight();
     });
 
     if (this.mode === 'edit') {
         google.maps.event.addListener(this.map, 'click', function (event) {
-            $.mobile.changePage('/places/new?lat=' + event.latLng.lat() + '&lng=' + event.latLng.lng());
+            window.location = '/places/new?lat=' + event.latLng.lat() + '&lng=' + event.latLng.lng();
         });
     }
 };
@@ -109,11 +116,10 @@ MAPRAMBLE.fitBounds = function () {
 };
 
 // メイン・プログラム
-$(document).on('pageshow', function () {
+$(document).ready(function () {
     'use strict';
-    MAPRAMBLE.setHeight();
     MAPRAMBLE.map = MAPRAMBLE.createMap({zoom: 14, lat: 40.784056, lng: 140.781172});
-    MAPRAMBLE.addPlaceMarkers();
-    MAPRAMBLE.fitBounds();
+    MAPRAMBLE.resizeHeight();
     MAPRAMBLE.setEventHandler();
+    MAPRAMBLE.addPlaceMarkers();
 });

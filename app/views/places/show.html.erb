@@ -1,11 +1,15 @@
 <% provide :title, @place.name %>
 
-<%= raw(@place.description) %>
+<h1><%= yield(:title) %></h1>
+<div>
+<%= simple_format @place.description %>
+</div>
+<br>
 <% if @place.image.present? && @place.image.data != nil %>
 <p><%= place_image_tag @place, style: "max-width:320px; width:100%;" %></p>
 <% end %>
 
 <% if edit_mode? %>
-<%= link_to_btn '編集', edit_place_path(@place) %>
-<%= link_to "削除", @place, { method: :delete, data: { confirm: '本当に削除しますか' }, class: 'ui-btn ui-btn-c' } %>
+<%= link_to '編集', edit_place_path(@place), class: 'btn btn-default btn-lg' %>
+<%= link_to "削除", @place, { method: :delete, data: { confirm: '本当に削除しますか' }, class: 'btn btn-default btn-lg' } %>
 <% end %>

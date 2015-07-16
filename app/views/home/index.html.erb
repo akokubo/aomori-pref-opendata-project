@@ -1,15 +1,17 @@
 <% provide :title, "ようこそ" %>
-<p>マップ上で、自分の好きな場所を登録して、自分だけの地図を作りましょう</p>
-<% if edit_mode? %>
-<p>編集できなくするには、「閲覧モード」に切り替えます。</p>
-<% else %>
-<p>編集するには、「編集モード」に切り替えます。</p>
-<% end %>
-<%= link_to_btn "マップへ", map_path %>
-<%= link_to_btn "場所の一覧へ", places_path %>
-<%= link_to_btn "アプリについて", home_about_path %>
-<% if edit_mode? %>
-<%= link_to_btn "閲覧モードへ", signout_path, method: :delete %>
-<% else %>
-<%= link_to_btn "編集モードへ", sessions_path, method: :post %>
-<% end %>
+<div class="jumbotron">
+	<h1><%= yield(:title) %></h1>
+
+	<p>マップ上で、自分の好きな場所を登録して、自分だけの地図を作りましょう</p>
+	<p><%= link_to "マップへ", map_path, class: 'btn btn-primary btn-lg' %>
+	<%= link_to "場所の一覧へ", places_path, class: 'btn btn-primary btn-lg' %></p>
+</div>
+<div>
+	<% if edit_mode? %>
+	<p>編集できなくするには、「閲覧モード」に切り替えます。</p>
+	<p><%= link_to "閲覧モードへ切り替え", signout_path, method: :delete, class: 'btn btn-default' %></p>
+	<% else %>
+	<p>編集するには、「編集モード」に切り替えます。</p>
+	<p><%= link_to "編集モードへ切り替え", sessions_path, method: :post, class: 'btn btn-default' %></p>
+	<% end %>
+</div>

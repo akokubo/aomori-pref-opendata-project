@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
-//= require jquery.mobile.init
 //= require_tree .
 

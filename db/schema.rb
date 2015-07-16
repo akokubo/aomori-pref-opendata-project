@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140720005446) do
 
-  create_table "place_images", force: true do |t|
+  create_table "place_images", force: :cascade do |t|
     t.integer  "place_id"
     t.binary   "data"
     t.string   "content_type"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20140720005446) do
 
   add_index "place_images", ["place_id"], name: "index_place_images_on_place_id"
 
-  create_table "places", force: true do |t|
+  create_table "places", force: :cascade do |t|
     t.string   "name"
     t.float    "lat"
     t.float    "lng"

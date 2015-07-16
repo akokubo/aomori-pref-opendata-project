@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
-  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.css" />
+  <%= render 'layouts/shim' %>
   <%= javascript_include_tag 'application' %>
-  <script src="https://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
-
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div data-role="page">
-  <%= render 'layouts/menu_panel' %>
   <%= render 'layouts/header' %>
-  <div role="main" class="ui-content">
-  <% if notice %><p class="notice"><%= notice %></p><% end %>
-<%= yield %>
-  </div>
+
+  <div class="container" id="main">
+    <% if notice %><p class="alert alert-info"><%= notice %></p><% end %>
+    <%= yield %>
+  </div><!-- /.container -->
+
   <%= render 'layouts/footer' %>
-</div>
 </body>
 </html>

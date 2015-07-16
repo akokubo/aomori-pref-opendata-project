@@ -1,15 +1,15 @@
 <% provide :title, "場所の一覧" %>
-
+<h1><%= yield(:title) %></h1>
 <% if @places.present? %>
-  <ul data-role="listview" data-inset="true">
+  <div class="list-group">
   <% @places.each do |place| %>
-    <li><%= link_to place.name, place %></li>
+    <%= link_to place.name, place, class: 'list-group-item' %>
   <% end %>
-  </ul>
+  </div>
   <% else %>
   <p>登録された場所はありません。</p>
 <% end %>
 
 <% if edit_mode? %>
-<%= link_to_btn '新しい場所の作成', new_place_path %>
+<%= link_to '新しい場所の作成', new_place_path, class: 'btn btn-default btn-lg' %>
 <% end %>
