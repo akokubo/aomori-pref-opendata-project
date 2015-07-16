@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
+  root 'home#index'
+
+  get 'about' => 'home#about'
+  get 'map'   => "map#index", as: :map
+
+  resources :places
+  
   resources :sessions, only: [:create, :destroy]
   match '/signout', to: 'sessions#destroy', via: 'delete'
 
-  get 'map' => "map#index", as: :map
-
-  root 'home#index'
-  get 'home/about' => 'home#about'
-  
-  resources :places
-  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
