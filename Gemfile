@@ -1,15 +1,19 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
+gem 'rails', '4.2.3'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
   # テストなどにRSpecを使用
   gem 'rspec-rails'
+end
+
+group :development do
+  gem 'web-console', '~> 2.0'
 end
 
 group :production do
