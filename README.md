@@ -16,8 +16,8 @@ Gemのインストール
 
 ```
 $ cd opencampus_workshop
-$ bin/bundle update
 $ bin/bundle install --without production
+$ bin/bundle update
 ```
 
 マイグレーション
