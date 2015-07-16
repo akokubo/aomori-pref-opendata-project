@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class PlaceImagesControllerTest < ActionController::TestCase
+=begin
   setup do
-    @place_image = place_images(:one)
+    @place_image = PlaceImage.first
   end
 
   test "should get index" do
@@ -46,4 +47,5 @@ class PlaceImagesControllerTest < ActionController::TestCase
 
     assert_redirected_to place_images_path
   end
+=end
 end

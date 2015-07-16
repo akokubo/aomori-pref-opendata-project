@@ -2,14 +2,12 @@
 
 one:
   name: MyString
-  category_id: 
   lat: 1.5
   lng: 1.5
   description: MyText
 
 two:
   name: MyString
-  category_id: 
   lat: 1.5
   lng: 1.5
   description: MyText
