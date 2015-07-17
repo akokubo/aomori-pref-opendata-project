@@ -65,9 +65,9 @@ MAPRAMBLE.addMarker = function (place) {
     google.maps.event.addListener(marker, 'click', function () {
         return (function (id) {
             if (MAPRAMBLE.mode === 'edit') {
-                $.mobile.changePage('/places/' + id + '/edit');
+                window.location = '/places/' + id + '/edit';
             } else {
-                $.mobile.changePage('/places/' + id);
+                window.location = '/places/' + id;
             }
         }(place.id));
     });
