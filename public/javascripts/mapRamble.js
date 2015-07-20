@@ -58,7 +58,7 @@ MAPRAMBLE.addMarker = function (place) {
     options = {
         position: new google.maps.LatLng(place.lat, place.lng),
         map: this.map,
-        icon: "http://maps.google.com/mapfiles/marker.png"
+        icon: "https://maps.google.com/mapfiles/marker.png"
     };
 
     marker = new google.maps.Marker(options);
