@@ -4,5 +4,11 @@
   "repository": "https://github.com/akokubo/opencampus_workshop",
   "scripts": {
   	"postdeploy": "bundle exec rake db:migrate"
+  },
+  "env": {
+  	"S3_ACCESS_KEY": "",
+  	"S3_SECRET_KEY": "",
+  	"S3_REGION": "",
+  	"S3_BUCKET": ""
   }
 }
