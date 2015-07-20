@@ -3,13 +3,14 @@
 <h1><%= yield(:title) %></h1>
 <div>
 <%= simple_format @place.description %>
-</div>
+<% if @place.image.present? %>
 <br>
-<% if @place.image.present? && @place.image.data != nil %>
-<p><%= place_image_tag @place, style: "max-width:320px; width:100%;" %></p>
+<%= image_tag @place.image.url, style: "width: 100%; max-width: 512px;" %>
 <% end %>
+</div>
 
 <% if edit_mode? %>
+<br>
 <%= link_to '編集', edit_place_path(@place), class: 'btn btn-default btn-lg' %>
 <%= link_to "削除", @place, { method: :delete, data: { confirm: '本当に削除しますか' }, class: 'btn btn-default btn-lg' } %>
 <% end %>

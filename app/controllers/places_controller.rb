@@ -10,24 +10,17 @@ class PlacesController < ApplicationController
   # GET /places/1
   # GET /places/1.json
   def show
-      if params[:format].in?(["jpg", "png", "gif"])
-      send_image
-    else
-      render "places/show"
-    end
   end
 
   # GET /places/new
   def new
     @place = Place.new
-    @place.build_image
     @place.lat = params[:lat]
     @place.lng = params[:lng]
   end
 
   # GET /places/1/edit
   def edit
-    @place.build_image unless @place.image
   end
 
   # POST /places
@@ -49,9 +42,12 @@ class PlacesController < ApplicationController
   # PATCH/PUT /places/1
   # PATCH/PUT /places/1.json
   def update
+    if params[:image_destroy]
+      @place.remove_image!
+    end
     respond_to do |format|
       if @place.update(place_params)
-        format.html { redirect_to map_url }
+        format.html { redirect_to @place }
         format.json { render :show, status: :ok, location: @place }
       else
         format.html { render :edit }
@@ -78,15 +74,6 @@ class PlacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:name, :lat, :lng, :description, image_attributes: [:uploaded_image])
-    end
-
-    # 画像送信
-    def send_image
-      if @place.image.present? && @place.image.data != nil
-        send_data @place.image.data, type: @place.image.content_type, disposition: "inline"
-      else
-        raise NotFount
-      end
+      params.require(:place).permit(:name, :lat, :lng, :description, :image)
     end
 end

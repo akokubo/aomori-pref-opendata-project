@@ -57,6 +57,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # gem 'debugger', group: [:development, :test]
 
 gem 'bootstrap-sass'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
 
 group :test do
   gem 'minitest-reporters'

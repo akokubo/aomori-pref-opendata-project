@@ -46,6 +46,7 @@ MAPRAMBLE.addPlaceMarkers = function () {
         places.map(function (place) {
             that.addMarker(place);
         });
+        that.fitBounds(places);
     });
 };
 
@@ -82,11 +83,7 @@ MAPRAMBLE.resizeHeight = function () {
     var windowInnerHeight = $(window).innerHeight(),
         headerHeight = $("#header").height(),
         footerHeight = $("#footer").height(),
-        uiContentPadding = 180;
-/*
-            = parseInt($(".ui-content").css('padding-top'), 10)
-            + parseInt($(".ui-content").css('padding-bottom'), 10);
-*/
+        uiContentPadding = 90;
     $("#map").css("height", windowInnerHeight - headerHeight - footerHeight - uiContentPadding);
 };
 
@@ -106,11 +103,11 @@ MAPRAMBLE.setEventHandler = function () {
 };
 
 // マップの表示範囲をマーカーに合わせる
-MAPRAMBLE.fitBounds = function () {
+MAPRAMBLE.fitBounds = function (places) {
     'use strict';
-    if (this.places.length > 1) {
+    if (places.length > 1) {
         this.map.fitBounds(this.bounds);
-    } else if (this.places.length === 1) {
+    } else if (places.length === 1) {
         this.map.setCenter(this.bounds.getCenter());
     }
 };

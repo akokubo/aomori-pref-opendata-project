@@ -1,5 +1,8 @@
 <% provide :title, "場所の編集" %>
-<%= form_for(@place) do |f| %>
+
+<h1><%= yield(:title) %></h1>
+
+<%= form_for(@place, html: { multipart: true }) do |f| %>
   <% if @place.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
@@ -16,27 +19,32 @@
     <%= f.label :name, "名前" %><br>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
+
   <div class="form-group">
     <%= f.label :description, "説明" %><br>
     <%= f.text_area :description, class: 'form-control' %>
   </div>
 
-  <%= f.fields_for :image do |imgf| %>
-    <% if !imgf.object.new_record? && imgf.object.errors.empty? && @place.image.data != nil %>
-      <div class="form-group">
-        現在の画像<br>
-        <%= place_image_tag @place, style: "max-width: 320px; width: 100%; vertical-align: top;" %>
-      </div>
-      <div class="form-group">
-        <%= imgf.check_box :_destroy %>
-        <%= imgf.label :_destroy, "現在の画像を削除する" %>
-        <%= imgf.hidden_field :id %>
-      </div>
-    <% end %>
-  <div class="form-group">
-    <%= imgf.label :uploaded_image, "別な画像に入れ替える" %>
-    <%= imgf.file_field :uploaded_image %>
-  </div>
+
+  <% if @place.image.present? %>
+    <div>
+      現在の画像<br>
+      <%= image_tag @place.image, style: "width: 100%; max-width: 512px;" %>
+    </div>
+    <br>
+    <div class="form-group">
+      <%= check_box_tag :image_destroy, 'true', false %>
+      <%= label_tag :image_destroy, "現在の画像を削除する" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :image, "別な画像に入れ替える" %>
+      <%= f.file_field :image %>
+    </div>
+  <% else %>
+    <div class="form-group">
+      <%= f.label :image, "画像を挿入する" %>
+      <%= f.file_field :image %>
+    </div>
   <% end %>
 
   <div class="form-group">

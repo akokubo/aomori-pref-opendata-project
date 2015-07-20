@@ -36,7 +36,7 @@ class PlacesControllerTest < ActionController::TestCase
 
   test "should update place" do
     patch :update, id: @place, place: { description: @place.description, lat: @place.lat, lng: @place.lng, name: @place.name }
-    assert_redirected_to map_path
+    assert_redirected_to place_path(@place)
   end
 
   test "should destroy place" do
