@@ -60,6 +60,7 @@ gem 'bootstrap-sass'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
+gem 'fog-aws'
 
 group :test do
   gem 'minitest-reporters'

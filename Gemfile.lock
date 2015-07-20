@@ -84,6 +84,11 @@ GEM
       ipaddress (~> 0.5)
       nokogiri (~> 1.5, >= 1.5.11)
       opennebula
+    fog-aws (0.7.3)
+      fog-core (~> 1.27)
+      fog-json (~> 1.0)
+      fog-xml (~> 0.1)
+      ipaddress (~> 0.8)
     fog-brightbox (0.7.1)
       fog-core (~> 1.22)
       fog-json
@@ -249,6 +254,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.1.0)
   fog
+  fog-aws
   jbuilder (~> 2.0)
   jquery-rails
   mini_backtrace
