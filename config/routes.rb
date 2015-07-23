@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  resources :initials
   root 'home#index'
 
   get 'about' => 'home#about'
   get 'map'   => "map#index", as: :map
 
   resources :places
+  resource :initial
   
   resources :sessions, only: [:create, :destroy]
   match '/signout', to: 'sessions#destroy', via: 'delete'

@@ -5,23 +5,14 @@ class InitialsControllerTest < ActionController::TestCase
     @initial = initials(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:initial)
-  end
-
   test "should get new" do
     get :new
     assert_response :success
   end
 
   test "should create initial" do
-    assert_difference('Initial.count') do
-      post :create, initial: { description: @initial.description, lat: @initial.lat, lng: @initial.lng, title: @initial.title, zoom: @initial.zoom }
-    end
-
-    assert_redirected_to initials_path
+    post :create, initial: { description: @initial.description, lat: @initial.lat, lng: @initial.lng, title: @initial.title, zoom: @initial.zoom }
+    assert_redirected_to initial_path
   end
 
   test "should show initial" do
@@ -36,14 +27,12 @@ class InitialsControllerTest < ActionController::TestCase
 
   test "should update initial" do
     patch :update, id: @initial, initial: { description: @initial.description, lat: @initial.lat, lng: @initial.lng, title: @initial.title, zoom: @initial.zoom }
-    assert_redirected_to initials_path
+    assert_redirected_to initial_path
   end
 
   test "should destroy initial" do
-    assert_difference('Initial.count', -1) do
-      delete :destroy, id: @initial
-    end
+    delete :destroy, id: @initial
 
-    assert_redirected_to initials_path
+    assert_redirected_to initial_path
   end
 end

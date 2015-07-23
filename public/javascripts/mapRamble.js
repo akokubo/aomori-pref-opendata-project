@@ -115,19 +115,19 @@ MAPRAMBLE.fitBounds = function (places) {
 // メイン・プログラム
 $(document).ready(function () {
     'use strict';
-    $.getJSON('/initials.json', function (initials) {
-        if (initials.lat_max && initials.lat_min
-                && initials.lng_max && initials.lng_min) {
+    $.getJSON('/initial.json', function (initial) {
+        if (initial.lat_max && initial.lat_min
+                && initial.lng_max && initial.lng_min) {
             MAPRAMBLE.bounds = new google.maps.LatLngBounds(
-                new google.maps.LatLng(initials.lat_min, initials.lng_min),
-                new google.maps.LatLng(initials.lat_max, initials.lng_max)
+                new google.maps.LatLng(initial.lat_min, initial.lng_min),
+                new google.maps.LatLng(initial.lat_max, initial.lng_max)
             );
         }
 
         MAPRAMBLE.map = MAPRAMBLE.createMap({
-            zoom: initials.zoom,
-            lat: initials.lat,
-            lng: initials.lng
+            zoom: initial.zoom,
+            lat: initial.lat,
+            lng: initial.lng
         });
 
         MAPRAMBLE.resizeHeight();

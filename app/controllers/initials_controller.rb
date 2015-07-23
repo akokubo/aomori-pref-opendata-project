@@ -1,37 +1,32 @@
 class InitialsController < ApplicationController
   before_action :set_initial, only: [:show, :edit, :update, :destroy]
 
-  # GET /initials
-  # GET /initials.json
-  def index
+  # GET /initial
+  # GET /initial.json
+  def show
     @initial = Initial.last
     if @initial.blank?
       @initial = Initial.new
     end
   end
 
-  # GET /initials/1
-  # GET /initials/1.json
-  def show
-  end
-
-  # GET /initials/new
+  # GET /initial/new
   def new
     @initial = Initial.new
   end
 
-  # GET /initials/1/edit
+  # GET /initial/edit
   def edit
   end
 
-  # POST /initials
-  # POST /initials.json
+  # POST /initial
+  # POST /initial.json
   def create
     @initial = Initial.new(initial_params)
 
     respond_to do |format|
       if @initial.save
-        format.html { redirect_to initials_url, notice: '設定が変更されました' }
+        format.html { redirect_to initial_url, notice: '設定が変更されました' }
         format.json { render :show, status: :created, location: @initial }
       else
         format.html { render :new }
@@ -40,12 +35,12 @@ class InitialsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /initials/1
-  # PATCH/PUT /initials/1.json
+  # PATCH/PUT /initial
+  # PATCH/PUT /initial.json
   def update
     respond_to do |format|
       if @initial.update(initial_params)
-        format.html { redirect_to initials_url, notice: '設定が変更されました' }
+        format.html { redirect_to initial_url, notice: '設定が変更されました' }
         format.json { render :show, status: :ok, location: @initial }
       else
         format.html { render :edit }
@@ -54,12 +49,12 @@ class InitialsController < ApplicationController
     end
   end
 
-  # DELETE /initials/1
-  # DELETE /initials/1.json
+  # DELETE /initials
+  # DELETE /initials.json
   def destroy
-    @initial.destroy
+    @initial.destroy  if @initial.present?
     respond_to do |format|
-      format.html { redirect_to initials_url, notice: '設定を初期化しました' }
+      format.html { redirect_to initial_url, notice: '設定を初期化しました' }
       format.json { head :no_content }
     end
   end
@@ -67,7 +62,7 @@ class InitialsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_initial
-      @initial = Initial.find(params[:id])
+      @initial = Initial.last
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
