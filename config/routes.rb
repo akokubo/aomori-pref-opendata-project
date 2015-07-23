@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :initials
   root 'home#index'
 
   get 'about' => 'home#about'

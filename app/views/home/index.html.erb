@@ -1,8 +1,7 @@
 <% provide :title, "ようこそ" %>
 <div class="jumbotron">
 	<h1><%= yield(:title) %></h1>
-
-	<p>マップ上で、自分の好きな場所を登録して、自分だけの地図を作りましょう</p>
+    <p><%= simple_format @initial.description %></p>
 	<p><%= link_to "マップへ", map_path, class: 'btn btn-primary btn-lg' %>
 	<%= link_to "場所の一覧へ", places_path, class: 'btn btn-primary btn-lg' %></p>
 </div>

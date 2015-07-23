@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to 'Open Campus', root_path, class: "navbar-brand" %>
+      <%= link_to @initial.title, root_path, class: "navbar-brand" %>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -16,6 +16,7 @@
         <li><%= link_to 'マップ', map_path %></li>
         <li><%= link_to '場所一覧', places_path %></li>
         <li><%= link_to 'アプリについて', about_path %></li>
+        <li><%= link_to 'アプリの設定', initials_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if edit_mode? %>

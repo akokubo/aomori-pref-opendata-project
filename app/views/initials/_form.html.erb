@@ -1,0 +1,35 @@
+<%= form_for(@initial) do |f| %>
+  <% if @initial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@initial.errors.count, "error") %> prohibited this initial from being saved:</h2>
+
+      <ul>
+      <% @initial.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, "アプリのタイトル" %><br>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, "アプリの説明" %><br>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :zoom, "マップのズーム" %><br>
+    <%= f.number_field :zoom, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :lat, "マップの中心の緯度" %><br>
+    <%= f.text_field :lat, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :lng, "マップの中心の経度" %><br>
+    <%= f.text_field :lng, class: 'form-control' %>
+  </div>
+  <%= f.submit "更新", class: 'btn btn-primary btn-lg' %>
+<% end %>

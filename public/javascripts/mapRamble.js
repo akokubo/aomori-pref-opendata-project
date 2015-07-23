@@ -1,7 +1,7 @@
-/*global google, $, MAPRAMBLE */
-/*jslint browser:true, devel:true */
+/*global google, $, window */
+/*jslint browser:true, devel:true, this:true */
 
-// var MAPRAMBLE = {};
+var MAPRAMBLE = {};
 
 MAPRAMBLE.map = null;
 
@@ -115,8 +115,23 @@ MAPRAMBLE.fitBounds = function (places) {
 // メイン・プログラム
 $(document).ready(function () {
     'use strict';
-    MAPRAMBLE.map = MAPRAMBLE.createMap({zoom: 14, lat: 40.784056, lng: 140.781172});
-    MAPRAMBLE.resizeHeight();
-    MAPRAMBLE.setEventHandler();
-    MAPRAMBLE.addPlaceMarkers();
+    $.getJSON('/initials.json', function (initials) {
+        if (initials.lat_max && initials.lat_min
+                && initials.lng_max && initials.lng_min) {
+            MAPRAMBLE.bounds = new google.maps.LatLngBounds(
+                new google.maps.LatLng(initials.lat_min, initials.lng_min),
+                new google.maps.LatLng(initials.lat_max, initials.lng_max)
+            );
+        }
+
+        MAPRAMBLE.map = MAPRAMBLE.createMap({
+            zoom: initials.zoom,
+            lat: initials.lat,
+            lng: initials.lng
+        });
+
+        MAPRAMBLE.resizeHeight();
+        MAPRAMBLE.setEventHandler();
+        MAPRAMBLE.addPlaceMarkers();
+    });
 });
