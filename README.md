@@ -45,6 +45,7 @@ Amazon S3でバケットを作成し、IAMのユーザーに対し、読み書�
 
 ```
 $ heroku create
+$ heroku rename 変更したい名前
 $ heroku config:set GOOGLE_MAPS_API_KEY=<Google Maps API key>
 $ heroku config:set S3_ACCESS_KEY=<access key>
 $ heroku config:set S3_SECRET_KEY=<secret key>
