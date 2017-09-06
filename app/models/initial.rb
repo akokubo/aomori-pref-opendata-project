@@ -20,10 +20,10 @@ class Initial < ActiveRecord::Base
   private
 
   def set_default
-    self.zoom        ||= 14
-    self.lat         ||= 40.784056
-    self.lng         ||= 140.781172
-    self.title       ||= 'Open Campus'
-    self.description ||= 'これは青森大学のオープンキャンパスのワークショップ用のアプリです。<br>マップ上で、自分の好きな場所を登録して、自分だけの地図を作りましょう。'
+    self.zoom        ||= 9
+    self.lat         ||= 40.479863
+    self.lng         ||= 141.562804
+    self.title       ||= 'Wikiフィールドノート'
+    self.description ||= 'これは八戸工業大学小久保温研究室で開発したアプリです。<br>マップ上で、自分の好きな場所を登録して、自分だけの地図を作りましょう。'
   end
 end
