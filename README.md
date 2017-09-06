@@ -23,8 +23,10 @@ $ bin/rake db:migrate
 
 起動
 ----
+Google Maps APIのキーを取得する。
+
 ```
-$ bin/rails server --port=3000
+$ GOOGLE_MAPS_API_KEY=<Google Maps API Key> bin/rails server --port=3000
 ```
 
 アクセス
@@ -34,8 +36,6 @@ $ bin/rails server --port=3000
 
 Herokuへのデプロイ
 -----------------
-Google Maps APIのキーを取得する。
-
 Amazon Web Servicesのアカウントを取得する。
 
 IAMでユーザーを作り、AccessキーとSecretキーを取得する。
