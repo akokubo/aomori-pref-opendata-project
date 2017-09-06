@@ -1,5 +1,9 @@
 class Initial < ActiveRecord::Base
   after_initialize :set_default
+  validates :zoom, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 21 }
+  validates :lat, presence: true, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }
+  validates :lng, presence: true, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }
+  validates :title, presence: true, length: { maximum: 255 }
 
   def lat_max
     Place.maximum(:lat)
