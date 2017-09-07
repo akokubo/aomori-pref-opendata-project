@@ -18,13 +18,13 @@ $ bin/bundle update
 マイグレーション
 ---------------
 ```
-$ bin/rake db:migrate
+$ bin/rails db:migrate
 ```
 
 初期データ投入
 -------------
 ```
-$ bin/rake db:seed
+$ bin/rails db:seed
 ```
 
 起動
@@ -38,6 +38,13 @@ $ GOOGLE_MAPS_API_KEY=<Google Maps API Key> bin/rails server --port=3000
 アクセス
 --------
 ブラウザで[http://localhost:3000/](http://localhost:3000/)にアクセス
+
+再初期化
+--------
+```
+$ bin rails db:migrate:reset
+$ bin rails db:seed
+```
 
 Herokuへのデプロイ
 -----------------
@@ -60,9 +67,20 @@ $ heroku config:set S3_SECRET_KEY=<secret key>
 $ heroku config:set S3_REGION=<region>
 $ heroku config:set S3_BUCKET=<bucket name>
 $ git push heroku
-$ heroku run rake db:migrate
+$ heroku run rails db:migrate
+$ heroku run rails db:seed
 $ heroku open
 ```
+
+Herokuのデータの再初期化を行う場合は以下のようにする。
+
+```
+$ heroku pg:reset DATABASE
+$ heroku run rails db:migrate
+$ heroku run rails db:seed
+$ heroku open
+```
+
 
 注意事項
 -------
