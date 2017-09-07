@@ -52,10 +52,12 @@ Amazon Web Servicesのアカウントを取得する。
 
 Amazon S3でバケットを作成する。
 
-IAMでユーザーを作り、AccessキーとSecretキーを取得する。
+Amazon IAMでユーザーを作り、AccessキーとSecretキーを取得する。
 IAMのユーザーに対し、S3バケットの読み書き権限を付与する。
 
-以下のようにHerokuにアプリを作り、環境変数を設定する。
+Herokuにアカウントを作る。
+
+以下のようにHerokuにアプリを作り、環境変数を設定し、デプロイする。
 なお、Tokyoリージョンの場合、S3_REGIONはap-northeast-1になる。
 
 ```
