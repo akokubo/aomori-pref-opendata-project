@@ -12,16 +12,18 @@
   </div>
 
   <% if @place.image.present? %>
-    <div>
+    <div class="form-group">
       <label>現在の<%= Place.human_attribute_name('image') %></label><br>
       <%= image_tag @place.image, style: "width: 100%; max-width: 512px;" %>
     </div>
-    <br>
+
     <div class="form-group">
-      <%= label_tag :image_destroy, class: "checkbox inline" do %>
-        <%= check_box_tag :image_destroy, 'true', false %>
-        <span>現在の<%= Place.human_attribute_name('image') %>を削除する</span>
-      <% end %>
+      <div class="form-check">
+        <%= label_tag :image_destroy, class: "form-check-label" do %>
+          <%= check_box_tag :image_destroy, class: "form-check-input" %>
+          <span>現在の<%= Place.human_attribute_name('image') %>を削除する</span>
+        <% end %>
+      </div>
     </div>
 
     <div class="form-group">
@@ -39,9 +41,10 @@
     <%= f.label :lat, Place.human_attribute_name('lat') %><br>
     <%= f.text_field :lat, class: 'form-control' %>
   </div>
+
   <div class="form-group">
     <%= f.label :lng, Place.human_attribute_name('lng') %><br>
     <%= f.text_field :lng, class: 'form-control' %>
   </div>
-  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  <%= f.submit yield(:button_text), class: "btn btn-primary btn-lg btn-block" %>
 <% end %>
