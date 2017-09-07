@@ -1,34 +1,24 @@
 <%= form_for @initial, url: initial_path do |f| %>
-  <% if @initial.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@initial.errors.count, "error") %> prohibited this initial from being saved:</h2>
-
-      <ul>
-      <% @initial.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/error_messages', object: @initial %>
 
   <div class="form-group">
-    <%= f.label :title, "アプリのタイトル(必須: 255文字まで)" %><br>
+    <%= f.label :title, "#{Initial.human_attribute_name('title')} (必須: 255文字まで)" %><br>
     <%= f.text_field :title, class: 'form-control'%>
   </div>
   <div class="form-group">
-    <%= f.label :description, "アプリの説明" %><br>
+    <%= f.label :description, Initial.human_attribute_name('description') %><br>
     <%= f.text_area :description, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :zoom, "マップのズーム(必須: 0〜21)" %><br>
+    <%= f.label :zoom, "#{Initial.human_attribute_name('zoom')} (必須: 0〜21)" %><br>
     <%= f.number_field :zoom, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :lat, "マップの中心の緯度(必須: -90〜90)" %><br>
+    <%= f.label :lat, "#{Initial.human_attribute_name('lat')} (必須: -90〜90)" %><br>
     <%= f.text_field :lat, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :lng, "マップの中心の経度(必須: -180〜180)" %><br>
+    <%= f.label :lng, "#{Initial.human_attribute_name('lng')} (必須: -180〜180)" %><br>
     <%= f.text_field :lng, class: 'form-control' %>
   </div>
   <%= f.submit "更新", class: 'btn btn-primary btn-lg' %>

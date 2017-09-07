@@ -1,42 +1,6 @@
 <% provide :title, "新しい場所の登録" %>
+<% provide :button_text, "登録" %>
 
 <h1><%= yield(:title) %></h1>
 
-<%= form_for(@place, html: { multipart: true }) do |f| %>
-  <% if @place.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
-
-      <ul>
-      <% @place.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.label :name, "名前" %><br>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :description, "説明" %><br>
-    <%= f.text_area :description, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :image, "表示画像" %>
-    <%= f.file_field :image %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :lat, "緯度" %><br>
-    <%= f.text_field :lat, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :lng, "経度" %><br>
-    <%= f.text_field :lng, class: 'form-control' %>
-  </div>
-  <%= f.submit "登録", class: 'btn btn-primary btn-lg' %>
-<% end %>
+<%= render 'form' %>

@@ -1,61 +1,8 @@
 <% provide :title, "場所の編集" %>
+<% provide :button_text, "更新" %>
 
 <h1><%= yield(:title) %></h1>
 
-<%= form_for(@place, html: { multipart: true }) do |f| %>
-  <% if @place.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
-
-      <ul>
-      <% @place.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.label :name, "名前" %><br>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :description, "説明" %><br>
-    <%= f.text_area :description, class: 'form-control' %>
-  </div>
-
-
-  <% if @place.image.present? %>
-    <div>
-      現在の画像<br>
-      <%= image_tag @place.image, style: "width: 100%; max-width: 512px;" %>
-    </div>
-    <br>
-    <div class="form-group">
-      <%= check_box_tag :image_destroy, 'true', false %>
-      <%= label_tag :image_destroy, "現在の画像を削除する" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :image, "別な画像に入れ替える" %>
-      <%= f.file_field :image %>
-    </div>
-  <% else %>
-    <div class="form-group">
-      <%= f.label :image, "画像を挿入する" %>
-      <%= f.file_field :image %>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.label :lat, "緯度" %><br>
-    <%= f.text_field :lat, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :lng, "経度" %><br>
-    <%= f.text_field :lng, class: 'form-control' %>
-  </div>
-  <%= f.submit "更新", class: 'btn btn-primary btn-lg' %>
-<% end %>
+<%= render 'form' %>
 <br>
 <%= link_to "削除", @place, { method: :delete, data: { confirm: '本当に削除しますか' }, class: 'btn btn-default btn-lg', role: 'button' } %>

@@ -1,0 +1,47 @@
+<%= form_for(@place, html: { multipart: true }) do |f| %>
+  <%= render 'shared/error_messages', object: @place %>
+
+  <div class="form-group">
+    <%= f.label :name, Place.human_attribute_name('name') %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, Place.human_attribute_name('description') %><br>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+
+  <% if @place.image.present? %>
+    <div>
+      <label>現在の<%= Place.human_attribute_name('image') %></label><br>
+      <%= image_tag @place.image, style: "width: 100%; max-width: 512px;" %>
+    </div>
+    <br>
+    <div class="form-group">
+      <%= label_tag :image_destroy, class: "checkbox inline" do %>
+        <%= check_box_tag :image_destroy, 'true', false %>
+        <span>現在の<%= Place.human_attribute_name('image') %>を削除する</span>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :image, "別な#{Place.human_attribute_name('image')}に入れ替える" %>
+      <%= f.file_field :image %>
+    </div>
+  <% else %>
+    <div class="form-group">
+      <%= f.label :image, "表示#{Place.human_attribute_name('image')}" %>
+      <%= f.file_field :image %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :lat, Place.human_attribute_name('lat') %><br>
+    <%= f.text_field :lat, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :lng, Place.human_attribute_name('lng') %><br>
+    <%= f.text_field :lng, class: 'form-control' %>
+  </div>
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

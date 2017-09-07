@@ -3,23 +3,23 @@
 <div>
   <table class="table table-bordered">
     <tr>
-      <th>アプリのタイトル<br>(255文字まで)</th>
+      <th><%= t(Initial.human_attribute_name('title')) %><br>(255文字まで)</th>
       <td><%= @initial.title %></td>
     </tr>
     <tr>
-      <th>アプリの説明</th>
+      <th><%= t(Initial.human_attribute_name('description')) %></th>
       <td><%= simple_format @initial.description %></td>
     </tr>
     <tr>
-      <th>マップのズーム<br>(0〜21)</th>
+      <th><%= t(Initial.human_attribute_name('zoom')) %><br>(0〜21)</th>
       <td><%= @initial.zoom %></td>
     </tr>
     <tr>
-      <th>マップの中心の緯度<br>(-90〜90)</th>
+      <th><%= t(Initial.human_attribute_name('lat')) %><br>(-90〜90)</th>
       <td><%= @initial.lat %></td>
     </tr>
     <tr>
-      <th>マップの中心の経度<br>(-180〜180)</th>
+      <th><%= t(Initial.human_attribute_name('lng')) %><br>(-180〜180)</th>
       <td><%= @initial.lng %></td>
     </tr>
   </table>

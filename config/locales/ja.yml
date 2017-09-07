@@ -1,0 +1,24 @@
+ja:
+  # shared/_error_messages
+  the_form_contains: "%{errors}がありました"
+  error: "つエラー"
+
+  activerecord:
+    models:
+      initial: "アプリの設定"
+      place: "場所"
+    attributes:
+      initial:
+        zoom: "マップのズーム"
+        lat: "マップの中心の緯度"
+        lng: "マップの中心の経度"
+        title: "アプリのタイトル"
+        description: "アプリの説明"
+        created_at: "投稿日時"
+        picture: "画像"
+      place:
+        name: "名前"
+        description: "説明"
+        image: "画像"
+        lat: "緯度"
+        lng: "経度"
