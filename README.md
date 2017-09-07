@@ -1,6 +1,11 @@
 README
 ======
 
+事前準備
+--------
+Ruby、Git、Heroku Toolbelt、Ruby on Rails 5.1.3、Imagemagickをインストールしておく。
+
+
 ダウンロード
 -----------
 ```
