@@ -1,5 +1,4 @@
 class InitialsController < ApplicationController
-  before_action :set_initial, only: [:show, :edit, :update, :destroy]
 
   # GET /initial
   # GET /initial.json
@@ -36,13 +35,6 @@ class InitialsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_initial
-      @initial = Initial.last
-      unless @initial
-        @initial = Initial.create(zoom: 9, lat: 40.479863, lng: 141.562804, title: 'Wikiフィールドノート', description: 'これは八戸工業大学小久保温研究室で開発したアプリです。<br>マップ上で、自分の好きな場所を登録して、自分だけの地図を作りましょう。<br>場所を登録するには、編集モードに切り替え、マップで登録したい地点をクリックします。')
-      end
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def initial_params

@@ -21,6 +21,16 @@ class Initial < ApplicationRecord
     Place.minimum(:lng)
   end
 
+  def self.set_default
+    initial = Initial.last
+    default_params = {zoom: 9, lat: 40.479863, lng: 141.562804, title: 'Wikiフィールドノート', description: 'これは八戸工業大学小久保温研究室で開発したアプリです。<br>マップ上で、自分の好きな場所を登録して、自分だけの地図を作りましょう。<br>場所を登録するには、編集モードに切り替え、マップで登録したい地点をクリックします。'}
+    if initial
+      initial.update_attributes(default_params)
+    else
+      Initial.create(default_params)
+    end
+  end
+
   private
 
     def check_count

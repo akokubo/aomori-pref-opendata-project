@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
 
   def set_initial
     @initial = Initial.last
-    if @initial.nil?
-      @initial = Initial.new
+    unless @initial
+      @initial = Initial.set_default
     end
   end
 end
