@@ -1,4 +1,4 @@
-class CreateInitials < ActiveRecord::Migration
+class CreateInitials < ActiveRecord::Migration[5.1]
   def change
     create_table :initials do |t|
       t.integer :zoom

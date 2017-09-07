@@ -21,9 +21,15 @@ $ bin/bundle update
 $ bin/rake db:migrate
 ```
 
+初期データ投入
+-------------
+```
+$ bin/rake db:seed
+```
+
 起動
 ----
-Google Maps APIのキーを取得する。
+Google Maps APIのキーを取得しておく。
 
 ```
 $ GOOGLE_MAPS_API_KEY=<Google Maps API Key> bin/rails server --port=3000
@@ -33,15 +39,17 @@ $ GOOGLE_MAPS_API_KEY=<Google Maps API Key> bin/rails server --port=3000
 --------
 ブラウザで[http://localhost:3000/](http://localhost:3000/)にアクセス
 
-
 Herokuへのデプロイ
 -----------------
 Amazon Web Servicesのアカウントを取得する。
 
-IAMでユーザーを作り、AccessキーとSecretキーを取得する。
+Amazon S3でバケットを作成する。
 
-Amazon S3でバケットを作成し、IAMのユーザーに対し、読み書き権限を付与する。
-ちなみに、Tokyoリージョンの場合、regionはap-northeast-1になる。
+IAMでユーザーを作り、AccessキーとSecretキーを取得する。
+IAMのユーザーに対し、S3バケットの読み書き権限を付与する。
+
+以下のようにHerokuにアプリを作り、環境変数を設定する。
+なお、Tokyoリージョンの場合、S3_REGIONはap-northeast-1になる。
 
 ```
 $ heroku create

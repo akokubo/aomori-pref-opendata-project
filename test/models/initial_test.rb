@@ -6,7 +6,16 @@ class InitialTest < ActiveSupport::TestCase
   end
 
   test "should be valid" do
-    assert @initial.valid?    
+    assert @initial.valid?
+  end
+
+  test "record should be unique" do
+    initial1 = @initial
+    initial1.save
+    initial2 = Initial.new(zoom: 11, lat: 45, lng: 140, title: "Lorem ipsum", description: "Lorem ipsum " * 20)
+    assert_no_difference('Initial.count') do
+      initial2.save
+    end
   end
 
   test "zoom should be present" do

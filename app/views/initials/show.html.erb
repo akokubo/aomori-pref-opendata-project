@@ -3,7 +3,7 @@
 <div>
   <table class="table table-bordered">
     <tr>
-      <th>アプリのタイトル</th>
+      <th>アプリのタイトル<br>(255文字まで)</th>
       <td><%= @initial.title %></td>
     </tr>
     <tr>
@@ -32,10 +32,6 @@
 
 <% if edit_mode? %>
 <br>
-<% if @initial.id.nil? %>
-<%= link_to '設定の変更', new_initial_path, class: 'btn btn-primary btn-lg' %>
-<% else %>
 <%= link_to '設定の変更', edit_initial_path, class: 'btn btn-primary btn-lg' %>
-<% end %>
 <%= link_to "設定の初期化", initial_path, { method: :delete, data: { confirm: '本当に初期化しますか' }, class: 'btn btn-default btn-lg' } %>
 <% end %>

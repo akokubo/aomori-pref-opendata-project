@@ -1,38 +1,29 @@
 require 'test_helper'
 
-class InitialsControllerTest < ActionController::TestCase
+class InitialsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @initial = initials(:one)
-  end
-
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create initial" do
-    post :create, initial: { description: @initial.description, lat: @initial.lat, lng: @initial.lng, title: @initial.title, zoom: @initial.zoom }
-    assert_redirected_to initial_path
+    @initial = Initial.create(zoom: 10, lat: 45, lng: 140, title: "Lorem ipsum", description: "Lorem ipsum " * 20)
   end
 
   test "should show initial" do
-    get :show, id: @initial
+    get initial_path
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @initial
+    get edit_initial_path
     assert_response :success
   end
 
   test "should update initial" do
-    patch :update, id: @initial, initial: { description: @initial.description, lat: @initial.lat, lng: @initial.lng, title: @initial.title, zoom: @initial.zoom }
+    patch initial_path, params: { initial: { description: @initial.description, lat: @initial.lat, lng: @initial.lng, title: @initial.title, zoom: @initial.zoom } }
     assert_redirected_to initial_path
   end
 
   test "should destroy initial" do
-    delete :destroy, id: @initial
-
+    assert_no_difference('Initial.count') do
+      delete initial_path
+    end
     assert_redirected_to initial_path
   end
 end
