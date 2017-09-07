@@ -14,8 +14,6 @@ ja:
         lng: "マップの中心の経度"
         title: "アプリのタイトル"
         description: "アプリの説明"
-        created_at: "投稿日時"
-        picture: "画像"
       place:
         name: "名前"
         description: "説明"
