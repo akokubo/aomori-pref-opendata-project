@@ -42,8 +42,8 @@ $ GOOGLE_MAPS_API_KEY=<Google Maps API Key> bin/rails server --port=3000
 再初期化
 --------
 ```
-$ bin rails db:migrate:reset
-$ bin rails db:seed
+$ bin/rails db:migrate:reset
+$ bin/rails db:seed
 ```
 
 Herokuへのデプロイ
@@ -83,7 +83,6 @@ $ heroku run rails db:seed
 $ heroku open
 ```
 
-
 注意事項
 -------
 Wikiのように使うことを想定しており、編集モードに切り替えると、誰でも書き込めますので、ご注意ください。
@@ -91,7 +90,6 @@ Wikiのように使うことを想定しており、編集モードに切り替�
 LICENSE
 -------
 [MIT License](LICENSE)
-
 
 Author
 ------
