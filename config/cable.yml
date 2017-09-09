@@ -7,4 +7,4 @@ test:
 production:
   adapter: redis
   url: redis://localhost:6379/1
-  channel_prefix: aomori-pref-opendata-project_production
+  channel_prefix: aomori_pref_opendata_project_production
