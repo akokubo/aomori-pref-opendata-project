@@ -3,8 +3,15 @@ README
 
 事前準備
 --------
-Ruby、Git、Heroku Toolbelt、Ruby on Rails 5.1.4、Imagemagickをインストールしておく。
+Ruby、Git、Heroku Toolbelt、Ruby on Rails 5.1.4、ImageMagickをインストールしておく。
 
+Cloud9でRails Tutorialをテンプレートにした場合、Ruby、Git、Heroku Toolbeltはインストール済み。
+Ruby on Rails 5.1.4とImageMagickのインストールは、以下のようにする。
+```
+$ gem install rails -v 5.1.4
+$ sudo apt-get update
+$ sudo apt-get install imagemagick --fix-missing
+```
 
 ダウンロード
 -----------
@@ -32,20 +39,34 @@ $ bin/rails db:migrate
 $ bin/rails db:seed
 ```
 
+テスト
+-----
+```
+$ rails test
+```
+
 起動
 ----
 Google Maps APIのキーを取得しておく。
 
+ローカル環境の場合の起動
 ```
-$ GOOGLE_MAPS_API_KEY=<Google Maps API Key> bin/rails server --port=3000
+$ GOOGLE_MAPS_API_KEY=<Google Maps API Key> bin/rails server
+```
+
+Cloud9の場合の起動
+```
+$ GOOGLE_MAPS_API_KEY=<Google Maps API Key> bin/rails server -p $PORT -b $IP
 ```
 
 アクセス
 --------
-ブラウザで[http://localhost:3000/](http://localhost:3000/)にアクセス
+ローカル環境の場合、ブラウザで[http://localhost:3000/](http://localhost:3000/)にアクセス
 
-再初期化
---------
+Cloud9の場合、[Share]→[Application]のURLの部分をクリック→[Open]
+
+再初期化(必要な場合)
+------------------
 ```
 $ bin/rails db:migrate:reset
 $ bin/rails db:seed
