@@ -2,6 +2,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  process :fix_exif_rotation
   process resize_to_limit: [1024, 1024]
 
   # Choose what kind of storage to use for this uploader:
